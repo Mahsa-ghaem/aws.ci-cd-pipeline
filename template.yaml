@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: "CI/CD demo — Python Lambda with Function URL"
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 10
+    MemorySize: 256
+    Architectures: [x86_64]
+
+Resources:
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: app/
+      Handler: app.lambda_handler
+      Description: "Hello API deployed by GitHub Actions via OIDC + SAM"
+      FunctionUrlConfig:
+        AuthType: NONE
+        Cors:
+          AllowOrigins: ['*']
+          AllowMethods: ['GET']
+          AllowHeaders: ['*']
+    Metadata:
+      BuildMethod: python3.12
+
+Outputs:
+  FunctionUrl:
+    Description: "Public URL (included in Lambda pricing; no API Gateway)"
+    Value: !GetAtt ApiFunctionUrl.FunctionUrl
