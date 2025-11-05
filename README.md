@@ -1,4 +1,4 @@
-#### AWS CI/CD Pipeline — Serverless Demo
+ #### AWS CI/CD Pipeline — Serverless Demo
 
 This project demonstrates a **complete CI/CD pipeline** that automatically tests, builds, and deploys a Python AWS Lambda function using **GitHub Actions**, **AWS SAM**, and **OpenID Connect (OIDC)** authentication — without using long-lived AWS keys.
 
@@ -28,39 +28,31 @@ Deploy a simple Python Lambda that returns a JSON response through a public Func
 | **S3 Bucket** | Stores build artifacts during deployment |
 | **AWS Lambda** | Python function serving a JSON API endpoint |
 
-------------------------
+--------------------------
 
 ### Repository Structure
 
 
-
-aws.ci-cd-pipeline/
-??? app/
-? ??? init.py
-? ??? app.py # Lambda function code
-??? tests/
-? ??? test_app.py # pytest unit test
-??? template.yaml # AWS SAM template (infrastructure definition)
-??? requirements.txt # Python test dependencies
-??? .github/
-??? workflows/
-??? cicd.yml # GitHub Actions workflow (CI/CD pipeline)
+- **app/** — Lambda function package (`app.py`, `__init__.py`)
+- **tests/** — pytest unit tests
+- **template.yaml** — AWS SAM template
+- **requirements.txt** — Python test dependencies
+- **.github/workflows/** — CI/CD workflow (`cicd.yml`)
 
 
-
----
+--------------------------
 
 ### Deployment Flow
 
-1. **You push code** to the `main` branch.  
-2. **GitHub Actions** automatically:
+1. We push the code to the `main` branch.  
+2. GitHub Actions automatically:
    - Runs `pytest`  
    - Builds the Lambda with SAM  
    - Deploys via CloudFormation  
-3. **AWS Lambda** and **Function URL** are created/updated.  
+3. AWS Lambda and Function URL are created/updated.  
 4. Open the Function URL in a browser to view JSON output.
 
----
+--------------------------
 
 ### Example Lambda Response
 
@@ -71,9 +63,9 @@ aws.ci-cd-pipeline/
 }
 ```
 
+--------------------------
 
-
-? Prerequisites
+### Prerequisites
 
 - AWS account (with OIDC role configured)
 
@@ -83,6 +75,8 @@ aws.ci-cd-pipeline/
 
 - AWS SAM CLI installed
 
+--------------------------
+
 
 ### How to Run Locally
 
@@ -90,6 +84,8 @@ aws.ci-cd-pipeline/
 pip install -r requirements.txt
 pytest -q
 ```
+
+-------------------------
 
 ## Author
 
