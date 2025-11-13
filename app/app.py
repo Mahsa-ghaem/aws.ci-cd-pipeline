@@ -5,7 +5,7 @@ def lambda_handler(event, context):
         "statusCode": 200,
         "headers": {"Content-Type": "application/json"},
         "body": json.dumps({
-            "message": "CI/CD on AWS via GitHub Actions + OIDC - success",
+            "message": "CI/CD on AWS via GitHub Actions + OIDC - v2",
             "path": (event or {}).get("rawPath", "/")
 
         })
