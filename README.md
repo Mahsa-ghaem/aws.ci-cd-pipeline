@@ -1,6 +1,8 @@
  #### AWS CI/CD Pipeline — Python Lambda(Manual Infrastructure)
 
-This project demonstrates a **continuous integration and delivery (CI/CD)** pipeline that automatically tests and deploys a Python AWS Lambda function using **GitHub Actions** and **OpenID Connect (OIDC)**. 
+This project demonstrates a **continuous integration and deployment (CI/CD)** pipeline that automatically tests and deploys a Python AWS Lambda function using **GitHub Actions** and **OpenID Connect (OIDC)**. 
+
+The GitHub Actions does both CI and CD. It runs the test (test_app.py) and deploy the code (app.py) into AWS Lambda.
 
 --------------------------
 
@@ -12,6 +14,7 @@ Deploy a simple Python Lambda that returns a JSON response through a public Func
 **Concept:**  
 All AWS resources (Lambda, S3, IAM role) are created manually once in the AWS Console.
 After that, GitHub Actions automatically handles **testing and deployment** whenever code changes are pushed.
+When I push code to GitHub, GitHub Actions automatically runs pytest and, if everything is green, deploys the updated Lambda code to AWS. The Lambda already has a public Function URL, so once deployment finishes, calling that URL immediately returns the new JSON output.
 
 ------------------------------
 
